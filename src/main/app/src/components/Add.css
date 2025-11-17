@@ -1,0 +1,22 @@
+.add-toolbar {
+    max-width: 200px;
+    margin: 20px auto;
+    text-align: left;
+}
+.add-toolbar div {
+    text-align: left;
+}
+.add-toolbar button {
+    margin: 5px;
+}
+
+.add-textarea {
+    width: 1150px;
+    height: 500px;
+}
+.add-result-table {
+    min-width: 60rem;
+    max-width: 650px;
+    margin: auto;
+    text-align: left;
+}
