@@ -34,6 +34,6 @@ public class AlbumTag {
 	
 	public AlbumTag(Album album, String tag) {
 		this.album = album;
-		this.tag = new Tag(id, tag);
+		this.tag = new Tag(tag);
 	}
 }
