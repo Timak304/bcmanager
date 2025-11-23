@@ -1,0 +1,49 @@
+{
+  "main": {
+    "toolbar": {
+      "search": "Show search interface",
+      "add": "Import new albums"
+    }
+  },
+  "search": {
+    "toolbar": {
+      "wishlistbutton": "Show wishlist",
+      "wishlistbuttonhelp": "Also show albums from wishlist",
+      "onebutton": "Display 1",
+      "onebuttonhelp": "Show tags having only 1 album related",
+      "filterinput": "Filter tag list on the expression",
+      "filterplaceholder": "Filter tag",
+      "resethelp": "Deselect all tags",
+      "reset": "Reset"
+    },
+    "table": {
+      "header": {
+        "type": "Type",
+        "artist": "Artist",
+        "name": "Name",
+        "link": "Link",
+        "location": "Location",
+        "releasedate": "Release Date",
+        "duration": "Duration",
+        "tags": "Tag List"
+      }
+    }
+  },
+  "add": {
+    "fanpagelabel": "Import fan page",
+    "button": {
+      "import": "Import",
+      "reset": "Reset"
+    },
+    "manual": "Import manually:",
+    "cat": {
+      "collection": "Collection",
+      "wishlist": "Wishlist"
+    },
+    "resulttable": {
+      "url": "URL",
+      "status": "Status",
+      "error": "Error"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "main": {
+    "toolbar": {
+      "search": "Afficher l'interface de recherche",
+      "add": "Importer de nouveaux albums"
+    }
+  },
+  "search": {
+    "toolbar": {
+      "filterinput": "Filtrer la liste des tags sur l'expression",
+      "filterplaceholder": "Filtre de tag",
+      "onebutton": "Affichage 1",
+      "onebuttonhelp": "Afficher les tags n'ayant qu'un seul album associé",
+      "reset": "Réinitialiser",
+      "resethelp": "Désélectionner tous les tags",
+      "wishlistbutton": "Afficher la liste de souhaits",
+      "wishlistbuttonhelp": "Afficher également les albums de la liste de souhaits"
+    },
+    "table": {
+      "header": {
+        "artist": "Artiste",
+        "duration": "Durée",
+        "link": "Lien",
+        "location": "Emplacement",
+        "name": "Nom",
+        "releasedate": "Date de sortie",
+        "tags": "Liste des tags",
+        "type": "Type"
+      }
+    }
+  },
+  "add": {
+    "button": {
+      "import": "Importer",
+      "reset": "Réinitialiser"
+    },
+    "cat": {
+      "collection": "Collection",
+      "wishlist": "Liste de souhaits"
+    },
+    "fanpagelabel": "Importer une page de fans",
+    "manual": "Importer manuellement :",
+    "resulttable": {
+      "error": "Erreur",
+      "status": "Statut",
+      "url": "URL"
+    }
+  }
+}
