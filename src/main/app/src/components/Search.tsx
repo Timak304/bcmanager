@@ -7,6 +7,7 @@ import { Button } from 'primereact/button';
 import type { Album } from '../types/types';
 import { TagList } from './TagList';
 import { TagButton } from './TagButton';
+import { useTranslation } from 'react-i18next';
 
 function linkBodyTemplate(album: Album) {
   return <a href={album.url} target='_blank'><i className="pi pi-external-link"></i></a>
@@ -40,6 +41,7 @@ function Search() {
   const [tagFilter, setTagFilter] = useState<string>("");
   const [showCountOne, setShowCountOne] = useState(false);
   const [showWishlist, setShowWishlist] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (selectedTags.length === 0) {
@@ -60,24 +62,24 @@ function Search() {
   return (
     <>
       <div className="tool-bar">
-        <Button onClick={() => setShowWishlist(!showWishlist)} outlined={!showWishlist} title="Also show albums from wishlist">Show wishlist</Button>
-        <Button onClick={() => setShowCountOne(!showCountOne)} outlined={!showCountOne} title="Show tag having only 1 album related">Display 1</Button>
-        <InputText value={tagFilter} onChange={(e) => setTagFilter(e.target.value)} placeholder="Filter tag" title="Filter tag list on the expression" />
-        <Button onClick={() => setSelectedTags([])} severity="danger" title="Deselect all tags">Reset</Button>
+        <Button onClick={() => setShowWishlist(!showWishlist)} outlined={!showWishlist} title={t("search.toolbar.wishlistbuttonhelp")}>{t("search.toolbar.wishlistbutton")}</Button>
+        <Button onClick={() => setShowCountOne(!showCountOne)} outlined={!showCountOne} title={t("search.toolbar.onebuttonhelp")}>{t("search.toolbar.onebutton")}</Button>
+        <InputText value={tagFilter} onChange={(e) => setTagFilter(e.target.value)} placeholder={t("search.toolbar.filterplaceholder")} title={t("search.toolbar.filterinput")} />
+        <Button onClick={() => setSelectedTags([])} severity="danger" title={t("search.toolbar.resethelp")}>{t("search.toolbar.reset")}</Button>
         {albums.length} results
       </div>
       <div className="tag-card">
         <TagList selectedTags={selectedTags} setSelectedTags={setSelectedTags} showCountOne={showCountOne} showWishlist={showWishlist} tagFilter={tagFilter} />
       </div>
       <DataTable value={albums} tableStyle={{ minWidth: '50rem' }} dataKey="id" stripedRows >
-        <Column field="category" header="Type" body={categoryBody}></Column>
-        <Column field="artist" header="Artist" sortable></Column>
-        <Column field="name" header="Name" body={albumNameBody} sortable></Column>
-        <Column field="url" header="Link" body={linkBodyTemplate}></Column>
-        <Column field="location" header="Location" sortable></Column>
-        <Column field="releaseDate" header="Release Date" sortable></Column>
-        <Column field="duration" header="Duration" body={durationBody} sortable></Column>
-        <Column field="tagList" header="Tag List" body={tagsBodyTemplate}></Column>
+        <Column field="category" header={t("search.table.header.type")} body={categoryBody}></Column>
+        <Column field="artist" header={t("search.table.header.artist")} sortable></Column>
+        <Column field="name" header={t("search.table.header.name")} body={albumNameBody} sortable></Column>
+        <Column field="url" header={t("search.table.header.link")} body={linkBodyTemplate}></Column>
+        <Column field="location" header={t("search.table.header.location")} sortable></Column>
+        <Column field="releaseDate" header={t("search.table.header.releasedate")} sortable></Column>
+        <Column field="duration" header={t("search.table.header.duration")} body={durationBody} sortable></Column>
+        <Column field="tagList" header={t("search.table.header.tags")} body={tagsBodyTemplate}></Column>
       </DataTable>
     </>
   )
