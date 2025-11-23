@@ -1,6 +1,7 @@
 export type Tag = {
     id: number;
     name: string;
+    alternativesAsList: string[];
 };
 
 export type TagCount = {

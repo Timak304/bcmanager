@@ -15,6 +15,7 @@ import fr.fonkisoft.bcmanager.domain.AlbumTag;
 import fr.fonkisoft.bcmanager.domain.Tag;
 import fr.fonkisoft.bcmanager.service.DaoManager;
 import fr.fonkisoft.bcmanager.service.Importer;
+import fr.fonkisoft.bcmanager.service.TagService;
 import io.javalin.http.Context;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,8 @@ public class Controller {
 	/** Importer service */
 	private Importer importer;
 	
+	private TagService tagService;
+	
 	@Data
 	public class TagCount {
 		final String name;
@@ -42,7 +45,8 @@ public class Controller {
 		albumDao = DaoManager.getInstance().getAlbumDao();
 		tagDao = DaoManager.getInstance().getTagDao();
 		albumTagDao = DaoManager.getInstance().getAlbumTagDao();
-		importer = new Importer();
+		importer = Importer.getInstance();
+		tagService = TagService.getInstance();
 	}
 	
 	/**
@@ -52,7 +56,7 @@ public class Controller {
 	 * 	queryparam showWishlist: includes wishlist albums in results
 	 * @return tag list
 	 */
-	public Context getTags(Context ctx) throws SQLException {
+	public Context getTagsWithCount(Context ctx) throws SQLException {
 		boolean showWishlist = Boolean.parseBoolean(ctx.queryParam("showWishlist"));
 		QueryBuilder<Tag, Long> tagQb = tagDao.queryBuilder();
 		QueryBuilder<AlbumTag, Long> albumTagQb = albumTagDao.queryBuilder();
@@ -71,6 +75,10 @@ public class Controller {
 				.map(row -> new TagCount(row[0], Integer.parseInt(row[1])))
 				.toList();
 		return ctx.json(results);
+	}
+	
+	public Context getTags(Context ctx) throws SQLException {
+		return ctx.json(tagDao.queryForAll());
 	}
 	
 	/**
@@ -217,6 +225,12 @@ public class Controller {
 	 */
 	public Context importFanPageStatus(Context ctx) {
 		return ctx.html("{\"current\": " + importer.getCurrent() +", \"total\": " + importer.getTotal() + ", \"errors\": \"" + importer.getErrors() + "\"}");
+	}
+	
+	public Context setAlternatives(Context ctx) throws SQLException {
+		List<String> alts = ctx.bodyAsClass(List.class);
+		tagService.setAlternatives(ctx.pathParam("tagname"), alts);
+		return ctx.html("");
 	}
 }
 

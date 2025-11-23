@@ -25,3 +25,12 @@ div.menu {
   right: 10px;
   top: 10px;
 }
+
+div.menu .p-button,
+div.toolbar .p-button {
+  margin: 2px 4px;
+}
+
+.tagalt-view div.toolbar {
+  margin: 4px;
+}
