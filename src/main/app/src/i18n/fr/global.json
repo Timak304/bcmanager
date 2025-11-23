@@ -2,7 +2,8 @@
   "main": {
     "toolbar": {
       "search": "Afficher l'interface de recherche",
-      "add": "Importer de nouveaux albums"
+      "add": "Importer de nouveaux albums",
+      "alts": "Gérer les alternatives de tags"
     }
   },
   "search": {
@@ -44,6 +45,11 @@
       "error": "Erreur",
       "status": "Statut",
       "url": "URL"
+    }
+  },
+  "tags": {
+    "button": {
+      "setalt": "Enregistrer les alternatives"
     }
   }
 }

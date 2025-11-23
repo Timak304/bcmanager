@@ -37,6 +37,8 @@ public class JavalinServer {
 				config.spaRoot.addFile("/", "/app/index.html");
 			})
 			.get("/api/tags", controller::getTags)
+			.get("/api/tagswithcount", controller::getTagsWithCount)
+			.post("/api/tagsalt/{tagname}", controller::setAlternatives)
 			.get("/api/albums", controller::getAlbums)
 			.post("/api/album", controller::importAlbum)
 			.post("/api/fanpage", controller::importFanPage)

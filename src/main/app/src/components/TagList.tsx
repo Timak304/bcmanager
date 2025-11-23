@@ -13,7 +13,7 @@ export function TagList(props: {
     const [allTags, setAllTags] = useState<TagCount[]>([]);
     
     useEffect(() => {
-        axios.get('/api/tags?showWishlist=' + props.showWishlist)
+        axios.get('/api/tagswithcount?showWishlist=' + props.showWishlist)
           .then(response => {
             setAllTags(response.data);
           });

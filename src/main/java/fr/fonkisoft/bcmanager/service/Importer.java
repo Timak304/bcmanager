@@ -52,19 +52,30 @@ public class Importer {
 	private HashMap<String, Tag> cacheTag = new HashMap<>();
 	
 	@Getter
+	private static final Importer instance = new Importer();
+	
+	@Getter
 	private int total = 0;
 	@Getter
 	private int current = 0;
 	@Getter
 	private String errors = "";
 	
-	public Importer() throws SQLException {
+	private Importer() {
 		albumDao = DaoManager.getInstance().getAlbumDao();
 		tagDao = DaoManager.getInstance().getTagDao();
 		albumTagDao = DaoManager.getInstance().getAlbumTagDao();
 		
-		for (Tag tag : tagDao.queryForAll()) {
-			cacheTag.put(tag.getName(), tag);
+		try {
+			for (Tag tag : tagDao.queryForAll()) {
+				cacheTag.put(tag.getName(), tag);
+				for (String alt : tag.getAlternativesAsList()) {
+					cacheTag.put(alt, tag);
+				}
+			}
+		}
+		catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
 	}
 	
