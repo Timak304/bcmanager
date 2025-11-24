@@ -147,7 +147,9 @@ public class Importer {
 	private Collection<AlbumTag> extractTags(Document doc, Album album) {
 		Element tagsDiv = doc.selectFirst("div.tralbum-tags");
 		return tagsDiv.selectStream("a.tag")
-				.map(tagElement -> new AlbumTag(album, tagElement.text().toLowerCase()))
+				.map(tagElement -> tagElement.text().toLowerCase().trim())
+				.distinct()
+				.map(tag -> new AlbumTag(album, tag))
 				.toList();
 	}
 	

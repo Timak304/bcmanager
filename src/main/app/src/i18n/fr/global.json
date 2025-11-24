@@ -50,6 +50,9 @@
   "tags": {
     "button": {
       "setalt": "Enregistrer les alternatives"
+    },
+    "suggestions": {
+      "title": "Suggestions"
     }
   }
 }

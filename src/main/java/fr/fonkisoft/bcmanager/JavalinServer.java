@@ -39,6 +39,7 @@ public class JavalinServer {
 			.get("/api/tags", controller::getTags)
 			.get("/api/tagswithcount", controller::getTagsWithCount)
 			.post("/api/tagsalt/{tagname}", controller::setAlternatives)
+			.get("/api/tagsalt/suggestions", controller::getSuggestions)
 			.get("/api/albums", controller::getAlbums)
 			.post("/api/album", controller::importAlbum)
 			.post("/api/fanpage", controller::importFanPage)
