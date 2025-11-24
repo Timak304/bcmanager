@@ -232,5 +232,9 @@ public class Controller {
 		tagService.setAlternatives(ctx.pathParam("tagname"), alts);
 		return ctx.html("");
 	}
+	
+	public Context getSuggestions(Context ctx) throws SQLException {
+		return ctx.json(tagService.suggestTagAlts());
+	}
 }
 

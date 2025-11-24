@@ -65,6 +65,7 @@ function Search() {
         <Button onClick={() => setShowWishlist(!showWishlist)} outlined={!showWishlist} title={t("search.toolbar.wishlistbuttonhelp")}>{t("search.toolbar.wishlistbutton")}</Button>
         <Button onClick={() => setShowCountOne(!showCountOne)} outlined={!showCountOne} title={t("search.toolbar.onebuttonhelp")}>{t("search.toolbar.onebutton")}</Button>
         <InputText value={tagFilter} onChange={(e) => setTagFilter(e.target.value)} placeholder={t("search.toolbar.filterplaceholder")} title={t("search.toolbar.filterinput")} />
+        <Button onClick={() => setTagFilter("")} severity="danger" style={{margin: "0 0 2px -8px", padding: "8px 0"}}><i className="pi pi-times" /></Button>
         <Button onClick={() => setSelectedTags([])} severity="danger" title={t("search.toolbar.resethelp")}>{t("search.toolbar.reset")}</Button>
         {albums.length} results
       </div>
